@@ -1,11 +1,8 @@
 # Recursive program to find factorial of a number
+# p.s. functions are easy, lets use Lambda expressions tonight
 
-def factorial(number):
-    if number <= 1:
-        return number
-    return number * factorial(number-1)
-    
+from functools import reduce
 
 number = int(input("Enter a number to get factorial: "))
 
-print ("Factorial of {} is: {}" .format(number, factorial(number)))
+print ("Factorial of {} is: {}" .format(number, reduce(lambda x,y: x*y, range(1, number+1))))
