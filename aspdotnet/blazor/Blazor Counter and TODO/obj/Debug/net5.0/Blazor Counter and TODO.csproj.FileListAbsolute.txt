@@ -56,3 +56,5 @@ D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Counter and TODO\obj\Debug\net
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Counter and TODO\obj\Debug\net5.0\Blazor Counter and TODO.pdb
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Counter and TODO\obj\Debug\net5.0\Blazor Counter and TODO.genruntimeconfig.cache
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Counter and TODO\obj\Debug\net5.0\Blazor Counter and TODO.csproj.CopyComplete
+D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Counter and TODO\obj\Debug\net5.0\RazorDeclaration\Pages\Todo.razor.g.cs
+D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Counter and TODO\obj\Debug\net5.0\Razor\Pages\Todo.razor.g.cs

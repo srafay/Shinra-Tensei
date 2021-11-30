@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = Blazor_Counter_and_TODO
-build_property.ProjectDir = d:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Counter and TODO\
+build_property.ProjectDir = D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Counter and TODO\

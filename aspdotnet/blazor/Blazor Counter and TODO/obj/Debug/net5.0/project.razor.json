@@ -131,6 +131,39 @@
         }
       },
       {
+        "HashCode": 1547892131,
+        "Kind": "Components.Component",
+        "Name": "Blazor_Counter_and_TODO.Pages.Todo",
+        "AssemblyName": "Blazor Counter and TODO",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Todo"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Blazor_Counter_and_TODO.Pages.Todo"
+        }
+      },
+      {
+        "HashCode": 539320328,
+        "Kind": "Components.Component",
+        "Name": "Blazor_Counter_and_TODO.Pages.Todo",
+        "AssemblyName": "Blazor Counter and TODO",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Blazor_Counter_and_TODO.Pages.Todo"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Blazor_Counter_and_TODO.Pages.Todo",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": 1007760657,
         "Kind": "Components.Component",
         "Name": "Blazor_Counter_and_TODO.App",
@@ -15990,6 +16023,11 @@
     {
       "FilePath": "d:\\Projects\\Shinra-Tensei\\aspdotnet\\blazor\\Blazor Counter and TODO\\Shared\\NavMenu.razor",
       "TargetPath": "Shared\\NavMenu.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "d:\\Projects\\Shinra-Tensei\\aspdotnet\\blazor\\Blazor Counter and TODO\\Pages\\Todo.razor",
+      "TargetPath": "Pages\\Todo.razor",
       "FileKind": "component"
     },
     {
