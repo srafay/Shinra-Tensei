@@ -12,6 +12,12 @@ Blazor Server is an implementation of the Blazor user-interface framework as par
 Users that click buttons, navigate, and other interactions with a Blazor Server application have their actions transmitted on this SignalR connection and the server responds with user-interface updates using the same connection. The Blazor Server framework automatically updates the browser with the content generated on the web server.
 
 
+## What is WebAssembly?
+WebAssembly (WASM) is an open binary standard. It defines a portable code format for programs designed to run in web browsers. WebAssembly is a textual assembly language with a compact binary format for fast downloads and near-native performance.
+
+WebAssembly provides a compilation target for languages such as C, C++, and Rust. It's designed to run alongside JavaScript so that both work together. WebAssembly also can generate progressive web applications to be downloaded and run offline.
+
+
 ## What is Blazor Web Assembly?
 Blazor Web Assembly, sometimes shortened to Blazor WASM, is an implementation of the Blazor user-interface framework that runs on the HTML 5 standard Web Assembly runtime that is present in all modern browsers. The binary output of your application, the DLL files are transmitted to the browser and run with a version of .NET that has been optimized to work with the Web Assembly runtime regardless of the underlying operating system of the device browsing to the website.
 
@@ -32,3 +38,4 @@ In Blazor, we build a Page with Razor that presents a screen of content in the b
 
 ## What are Components?
 Pages would be difficult to build if we had to rewrite every line of HTML without any reuse between pages. We can create Components using Razor that can be referenced and used in other components or pages.
+
