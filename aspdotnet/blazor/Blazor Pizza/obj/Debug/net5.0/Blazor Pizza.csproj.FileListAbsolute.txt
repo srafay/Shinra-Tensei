@@ -1,5 +1,6 @@
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\bin\Debug\net5.0\appsettings.Development.json
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\bin\Debug\net5.0\appsettings.json
+D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\bin\Debug\net5.0\CppProperties.json
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\bin\Debug\net5.0\Blazor Pizza.exe
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\bin\Debug\net5.0\Blazor Pizza.deps.json
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\bin\Debug\net5.0\Blazor Pizza.runtimeconfig.json
@@ -34,7 +35,6 @@ D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\bin\Debug\net5.0\runtime
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\bin\Debug\net5.0\runtimes\win-arm64\native\e_sqlite3.dll
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\bin\Debug\net5.0\runtimes\win-x64\native\e_sqlite3.dll
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\bin\Debug\net5.0\runtimes\win-x86\native\e_sqlite3.dll
-D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Blazor Pizza.csproj.AssemblyReference.cache
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Blazor Pizza.GeneratedMSBuildEditorConfig.editorconfig
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Blazor Pizza.AssemblyInfoInputs.cache
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Blazor Pizza.AssemblyInfo.cs
@@ -42,6 +42,7 @@ D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Blazor 
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Blazor Pizza.MvcApplicationPartsAssemblyInfo.cache
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Blazor Pizza.RazorComponent.input.cache
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\RazorDeclaration\App.razor.g.cs
+D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\RazorDeclaration\Components\ConfigurePizzaDialog.razor.g.cs
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\RazorDeclaration\Pages\Pizzas.razor.g.cs
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\RazorDeclaration\Shared\MainLayout.razor.g.cs
@@ -52,6 +53,7 @@ D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Blazor 
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Blazor Pizza.TagHelpers.output.cache
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Blazor Pizza.RazorCoreGenerate.cache
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Razor\App.razor.g.cs
+D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Razor\Components\ConfigurePizzaDialog.razor.g.cs
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Razor\Pages\Pizzas.razor.g.cs
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Razor\Shared\MainLayout.razor.g.cs
@@ -71,3 +73,4 @@ D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Blazor 
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\ref\Blazor Pizza.dll
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Blazor Pizza.pdb
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Blazor Pizza.genruntimeconfig.cache
+D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Blazor Pizza.csproj.AssemblyReference.cache

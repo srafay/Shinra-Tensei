@@ -207,6 +207,95 @@
         }
       },
       {
+        "HashCode": 119460185,
+        "Kind": "Components.Component",
+        "Name": "Blazor_Pizza.Components.ConfigurePizzaDialog",
+        "AssemblyName": "Blazor Pizza",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ConfigurePizzaDialog"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "pizza",
+            "TypeName": "Blazor_Pizza.Models.Pizza",
+            "Metadata": {
+              "Common.PropertyName": "pizza"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "OnCancel",
+            "TypeName": "Microsoft.AspNetCore.Components.EventCallback",
+            "Metadata": {
+              "Common.PropertyName": "OnCancel",
+              "Components.EventCallback": "True"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "OnConfirm",
+            "TypeName": "Microsoft.AspNetCore.Components.EventCallback",
+            "Metadata": {
+              "Common.PropertyName": "OnConfirm",
+              "Components.EventCallback": "True"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Blazor_Pizza.Components.ConfigurePizzaDialog"
+        }
+      },
+      {
+        "HashCode": 1121316832,
+        "Kind": "Components.Component",
+        "Name": "Blazor_Pizza.Components.ConfigurePizzaDialog",
+        "AssemblyName": "Blazor Pizza",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Blazor_Pizza.Components.ConfigurePizzaDialog"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "pizza",
+            "TypeName": "Blazor_Pizza.Models.Pizza",
+            "Metadata": {
+              "Common.PropertyName": "pizza"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "OnCancel",
+            "TypeName": "Microsoft.AspNetCore.Components.EventCallback",
+            "Metadata": {
+              "Common.PropertyName": "OnCancel",
+              "Components.EventCallback": "True"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "OnConfirm",
+            "TypeName": "Microsoft.AspNetCore.Components.EventCallback",
+            "Metadata": {
+              "Common.PropertyName": "OnConfirm",
+              "Components.EventCallback": "True"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Blazor_Pizza.Components.ConfigurePizzaDialog",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": 2085601310,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView",
@@ -15847,6 +15936,11 @@
       "FilePath": "d:\\Projects\\Shinra-Tensei\\aspdotnet\\blazor\\Blazor Pizza\\_Imports.razor",
       "TargetPath": "_Imports.razor",
       "FileKind": "componentImport"
+    },
+    {
+      "FilePath": "d:\\Projects\\Shinra-Tensei\\aspdotnet\\blazor\\Blazor Pizza\\Components\\ConfigurePizzaDialog.razor",
+      "TargetPath": "Components\\ConfigurePizzaDialog.razor",
+      "FileKind": "component"
     }
   ],
   "SerializationFormat": "0.2"

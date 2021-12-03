@@ -32,6 +32,7 @@ namespace Blazor_Pizza
             services.AddServerSideBlazor();
             
             services.AddSingleton<PizzaService>();
+            services.AddScoped<OrderState>();
             services.AddHttpClient();
             services.AddDbContext<PizzaStoreContext>(options => 
                 options.UseSqlite("Data Source=pizza.db"));

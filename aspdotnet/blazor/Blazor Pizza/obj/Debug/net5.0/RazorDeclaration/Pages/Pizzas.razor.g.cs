@@ -70,19 +70,46 @@ using Blazor_Pizza;
 #nullable disable
 #nullable restore
 #line 9 "D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\_Imports.razor"
+using Blazor_Pizza.Controllers;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 10 "D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\_Imports.razor"
 using Blazor_Pizza.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\Pages\Pizzas.razor"
+#line 11 "D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\_Imports.razor"
+using Blazor_Pizza.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\_Imports.razor"
+using Blazor_Pizza.DAL;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\_Imports.razor"
 using Blazor_Pizza.Data;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/pizzas")]
+#nullable restore
+#line 14 "D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\_Imports.razor"
+using Blazor_Pizza.Models;
+
+#line default
+#line hidden
+#nullable disable
     public partial class Pizzas : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -90,20 +117,6 @@ using Blazor_Pizza.Data;
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 43 "D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\Pages\Pizzas.razor"
- 
-    private Pizza[] todaysPizzas;
-
-    protected override async Task OnInitializedAsync()
-    {
-       //todaysPizzas = await PizzaSvc.GetPizzasAsync();
-    }
-
-#line default
-#line hidden
-#nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private PizzaService PizzaSvc { get; set; }
     }
 }
 #pragma warning restore 1591

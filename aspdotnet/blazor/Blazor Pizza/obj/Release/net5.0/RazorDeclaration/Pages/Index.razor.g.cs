@@ -7,7 +7,6 @@
 namespace Blazor_Pizza.Pages
 {
     #line hidden
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -70,7 +69,42 @@ using Blazor_Pizza;
 #nullable disable
 #nullable restore
 #line 9 "D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\_Imports.razor"
+using Blazor_Pizza.Controllers;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 10 "D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\_Imports.razor"
 using Blazor_Pizza.Shared;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 11 "D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\_Imports.razor"
+using Blazor_Pizza.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\_Imports.razor"
+using Blazor_Pizza.DAL;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\_Imports.razor"
+using Blazor_Pizza.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\_Imports.razor"
+using Blazor_Pizza.Models;
 
 #line default
 #line hidden
@@ -84,7 +118,7 @@ using System.Net.Http.Json;
 #nullable disable
 #nullable restore
 #line 6 "D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\Pages\Index.razor"
-using Blazor_Pizza.Models;
+using System;
 
 #line default
 #line hidden
@@ -98,21 +132,31 @@ using Blazor_Pizza.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\Pages\Index.razor"
+#line 33 "D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\Pages\Index.razor"
        
-List<PizzaSpecial> specials = new List<PizzaSpecial>();
+  List<PizzaSpecial> specials = new List<PizzaSpecial>();
+  Pizza configuringPizza;
+  bool showingConfigureDialog;
 
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 42 "D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\Pages\Index.razor"
-      
+  void ShowConfigurePizzaDialog(PizzaSpecial special)
+  {
+    configuringPizza = new Pizza()
+    {
+        Special = special,
+        SpecialId = special.Id,
+        Size = Pizza.DefaultSize
+    };
+    showingConfigureDialog = true;
+    System.Console.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+    System.Console.WriteLine(configuringPizza.Special.BasePrice);
+    System.Console.WriteLine(configuringPizza.Size);
+    System.Console.WriteLine(Pizza.DefaultSize);
+    System.Console.WriteLine(configuringPizza.GetFormattedTotalPrice());
+  }
 
   protected override async Task OnInitializedAsync()
     {
-        specials = await HttpClient.GetFromJsonAsync<List<PizzaSpecial>>(NavigationManager.BaseUri + "specials");
+      specials = await HttpClient.GetFromJsonAsync<List<PizzaSpecial>>(NavigationManager.BaseUri + "specials");
     }
 
 #line default
