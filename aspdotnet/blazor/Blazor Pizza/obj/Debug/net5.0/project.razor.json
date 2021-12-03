@@ -12,72 +12,6 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": -1151458294,
-        "Kind": "Components.Component",
-        "Name": "Blazor_Pizza.Pages.Pizzas",
-        "AssemblyName": "Blazor Pizza",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Pizzas"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Blazor_Pizza.Pages.Pizzas"
-        }
-      },
-      {
-        "HashCode": -1764894669,
-        "Kind": "Components.Component",
-        "Name": "Blazor_Pizza.Pages.Pizzas",
-        "AssemblyName": "Blazor Pizza",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Blazor_Pizza.Pages.Pizzas"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Blazor_Pizza.Pages.Pizzas",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -626271230,
-        "Kind": "Components.Component",
-        "Name": "Blazor_Pizza.Pages.Index",
-        "AssemblyName": "Blazor Pizza",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Blazor_Pizza.Pages.Index"
-        }
-      },
-      {
-        "HashCode": -465465488,
-        "Kind": "Components.Component",
-        "Name": "Blazor_Pizza.Pages.Index",
-        "AssemblyName": "Blazor Pizza",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Blazor_Pizza.Pages.Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Blazor_Pizza.Pages.Index",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -1321291855,
         "Kind": "Components.Component",
         "Name": "Blazor_Pizza.App",
@@ -107,6 +41,95 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "Blazor_Pizza.App",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 119460185,
+        "Kind": "Components.Component",
+        "Name": "Blazor_Pizza.Components.ConfigurePizzaDialog",
+        "AssemblyName": "Blazor Pizza",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ConfigurePizzaDialog"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "pizza",
+            "TypeName": "Blazor_Pizza.Models.Pizza",
+            "Metadata": {
+              "Common.PropertyName": "pizza"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "OnCancel",
+            "TypeName": "Microsoft.AspNetCore.Components.EventCallback",
+            "Metadata": {
+              "Common.PropertyName": "OnCancel",
+              "Components.EventCallback": "True"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "OnConfirm",
+            "TypeName": "Microsoft.AspNetCore.Components.EventCallback",
+            "Metadata": {
+              "Common.PropertyName": "OnConfirm",
+              "Components.EventCallback": "True"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Blazor_Pizza.Components.ConfigurePizzaDialog"
+        }
+      },
+      {
+        "HashCode": 1121316832,
+        "Kind": "Components.Component",
+        "Name": "Blazor_Pizza.Components.ConfigurePizzaDialog",
+        "AssemblyName": "Blazor Pizza",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Blazor_Pizza.Components.ConfigurePizzaDialog"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "pizza",
+            "TypeName": "Blazor_Pizza.Models.Pizza",
+            "Metadata": {
+              "Common.PropertyName": "pizza"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "OnCancel",
+            "TypeName": "Microsoft.AspNetCore.Components.EventCallback",
+            "Metadata": {
+              "Common.PropertyName": "OnCancel",
+              "Components.EventCallback": "True"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "OnConfirm",
+            "TypeName": "Microsoft.AspNetCore.Components.EventCallback",
+            "Metadata": {
+              "Common.PropertyName": "OnConfirm",
+              "Components.EventCallback": "True"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Blazor_Pizza.Components.ConfigurePizzaDialog",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -207,91 +230,101 @@
         }
       },
       {
-        "HashCode": 119460185,
+        "HashCode": -1151458294,
         "Kind": "Components.Component",
-        "Name": "Blazor_Pizza.Components.ConfigurePizzaDialog",
+        "Name": "Blazor_Pizza.Pages.Pizzas",
         "AssemblyName": "Blazor Pizza",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "ConfigurePizzaDialog"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "pizza",
-            "TypeName": "Blazor_Pizza.Models.Pizza",
-            "Metadata": {
-              "Common.PropertyName": "pizza"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "OnCancel",
-            "TypeName": "Microsoft.AspNetCore.Components.EventCallback",
-            "Metadata": {
-              "Common.PropertyName": "OnCancel",
-              "Components.EventCallback": "True"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "OnConfirm",
-            "TypeName": "Microsoft.AspNetCore.Components.EventCallback",
-            "Metadata": {
-              "Common.PropertyName": "OnConfirm",
-              "Components.EventCallback": "True"
-            }
+            "TagName": "Pizzas"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Blazor_Pizza.Components.ConfigurePizzaDialog"
+          "Common.TypeName": "Blazor_Pizza.Pages.Pizzas"
         }
       },
       {
-        "HashCode": 1121316832,
+        "HashCode": -1764894669,
         "Kind": "Components.Component",
-        "Name": "Blazor_Pizza.Components.ConfigurePizzaDialog",
+        "Name": "Blazor_Pizza.Pages.Pizzas",
         "AssemblyName": "Blazor Pizza",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Blazor_Pizza.Components.ConfigurePizzaDialog"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "pizza",
-            "TypeName": "Blazor_Pizza.Models.Pizza",
-            "Metadata": {
-              "Common.PropertyName": "pizza"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "OnCancel",
-            "TypeName": "Microsoft.AspNetCore.Components.EventCallback",
-            "Metadata": {
-              "Common.PropertyName": "OnCancel",
-              "Components.EventCallback": "True"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "OnConfirm",
-            "TypeName": "Microsoft.AspNetCore.Components.EventCallback",
-            "Metadata": {
-              "Common.PropertyName": "OnConfirm",
-              "Components.EventCallback": "True"
-            }
+            "TagName": "Blazor_Pizza.Pages.Pizzas"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Blazor_Pizza.Components.ConfigurePizzaDialog",
+          "Common.TypeName": "Blazor_Pizza.Pages.Pizzas",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -626271230,
+        "Kind": "Components.Component",
+        "Name": "Blazor_Pizza.Pages.Index",
+        "AssemblyName": "Blazor Pizza",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Blazor_Pizza.Pages.Index"
+        }
+      },
+      {
+        "HashCode": -465465488,
+        "Kind": "Components.Component",
+        "Name": "Blazor_Pizza.Pages.Index",
+        "AssemblyName": "Blazor Pizza",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Blazor_Pizza.Pages.Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Blazor_Pizza.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1911641675,
+        "Kind": "Components.Component",
+        "Name": "Blazor_Pizza.Pages.Map",
+        "AssemblyName": "Blazor Pizza",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Map"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Blazor_Pizza.Pages.Map"
+        }
+      },
+      {
+        "HashCode": 1581157034,
+        "Kind": "Components.Component",
+        "Name": "Blazor_Pizza.Pages.Map",
+        "AssemblyName": "Blazor Pizza",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Blazor_Pizza.Pages.Map"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Blazor_Pizza.Pages.Map",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -15905,6 +15938,11 @@
     {
       "FilePath": "d:\\Projects\\Shinra-Tensei\\aspdotnet\\blazor\\Blazor Pizza\\Pages\\Index.razor",
       "TargetPath": "Pages\\Index.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "d:\\Projects\\Shinra-Tensei\\aspdotnet\\blazor\\Blazor Pizza\\Pages\\Map.razor",
+      "TargetPath": "Pages\\Map.razor",
       "FileKind": "component"
     },
     {

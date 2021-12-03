@@ -74,3 +74,5 @@ D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\ref\Bla
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Blazor Pizza.pdb
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Blazor Pizza.genruntimeconfig.cache
 D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Blazor Pizza.csproj.AssemblyReference.cache
+D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\RazorDeclaration\Pages\Map.razor.g.cs
+D:\Projects\Shinra-Tensei\aspdotnet\blazor\Blazor Pizza\obj\Debug\net5.0\Razor\Pages\Map.razor.g.cs
