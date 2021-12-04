@@ -14,24 +14,6 @@
     <base href="~/" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link href="css/site.css" rel="stylesheet" />
-    @* Google Map *@
-    <script>
-        function initializeGoogleMap(lat, lon) {
-            var latlng = new google.maps.LatLng(lat, lon);
-            var options = {
-                zoom: 16, center: latlng,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(document.getElementById ("map"), options);
-            new google.maps.Marker({
-            position: latlng,
-            map,
-            title: "Cavenagh Hotel",
-        });
-        }
-    </script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_d-xJC9WIV7jMdczOCK5cv3405TOq36U"></script>
-    @* Google Map *@
 </head>
 <body>
     <app>
@@ -50,5 +32,9 @@
     </div>
 
     <script src="_framework/blazor.server.js"></script>
+    @* Google Map *@
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_d-xJC9WIV7jMdczOCK5cv3405TOq36U"></script>
+    <script src="js/googlemap.js"></script>
+    @* Google Map *@
 </body>
 </html>
