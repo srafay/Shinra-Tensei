@@ -16,8 +16,8 @@
     <link href="css/site.css" rel="stylesheet" />
     @* Google Map *@
     <script>
-        function initializeGoogleMap() {
-            var latlng = new google.maps.LatLng(-12.463106, 130.8419091);
+        function initializeGoogleMap(lat, lon) {
+            var latlng = new google.maps.LatLng(lat, lon);
             var options = {
                 zoom: 16, center: latlng,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
