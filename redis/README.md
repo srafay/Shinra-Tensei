@@ -35,3 +35,7 @@ For Windows, there are options.
     
 - Connect to Redis server programatically
   - Check the [available clients list](https://redis.io/docs/clients/) for options.
+
+## Redis Common configuration options
+
+## Redis Common commands
