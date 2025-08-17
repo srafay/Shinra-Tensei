@@ -1,0 +1,3 @@
+boto3==1.40.8  # Install locally, do not package with lambda as they dont need it
+SQLAlchemy==2.0.43
+PyMySQL==1.1.1
