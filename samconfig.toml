@@ -1,0 +1,12 @@
+version = 0.1
+
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "MyAtelierApp-Lambda"
+s3_prefix = "MyAtelierApp-Lambda"
+region = "ap-southeast-2"
+capabilities = "CAPABILITY_NAMED_IAM"
+resolve_s3 = true
+confirm_changeset = false
+image_repositories = []
+parameter_overrides = "VpcId=\"vpc-009ab7e05943c7394\" Subnet1=\"subnet-03e3a57fdf0b86554\" Subnet2=\"subnet-0108b0c24c563689c\" RdsSGId=\"sg-0e3e7816c5084ecbe\" DBSecretArn=\"arn:aws:secretsmanager:ap-southeast-2:633436032005:secret:AtelierDBSecret-DlGUkW\" DBEndpoint=\"atelier-mysql-db.ctks4ewawg5q.ap-southeast-2.rds.amazonaws.com\""
