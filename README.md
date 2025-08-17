@@ -42,6 +42,8 @@ source scripts/03_deploy_lambda.sh
 ```
 After deployment, the GraphQL API URL is printed in the console, or you can copy it from AWS Console -> AWS AppSync -> Http Endpoint.
 
+Use this Http Endpoint for creating the Retool application.
+
 Check resources created by each stack on AWS CloudFormation.
 <img width="1759" height="363" alt="image" src="https://github.com/user-attachments/assets/0050257f-fb34-4d82-8d19-21931b4bb584" />
 
