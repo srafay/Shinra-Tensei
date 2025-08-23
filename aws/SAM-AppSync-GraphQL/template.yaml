@@ -1,0 +1,288 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: MyAtelierApp - AppSync + Lambda
+
+#########################################################
+# Parameters - Inputs required when deploying the stack
+#########################################################
+Parameters:
+  VpcId:
+    Type: String
+    Description: VPC where Lambda functions will run
+  Subnet1:
+    Type: String
+    Description: First private subnet ID
+  Subnet2:
+    Type: String
+    Description: Second private subnet ID
+  RdsSGId:
+    Type: String
+    Description: Security group ID for RDS access
+  DBSecretArn:
+    Type: String
+    Description: ARN of database credentials secret (from RDS stack)
+  DBEndpoint:
+    Type: String
+    Description: Endpoint of the RDS instance
+
+#########################################################
+# Globals - Default properties for all Lambda functions
+#########################################################
+Globals:
+  Function:
+    Timeout: 30 # Maximum execution time in seconds
+    MemorySize: 128 # Memory allocation in MB
+    CodeUri: ./src # Folder containing Lambda code
+    Runtime: python3.13 # Python runtime version
+    VpcConfig:
+      SecurityGroupIds:
+        - !Ref RdsSGId # Attach Lambda to RDS security group
+      SubnetIds:
+        - !Ref Subnet1
+        - !Ref Subnet2
+    Environment:
+      Variables:
+        DB_SECRET_ARN: !Ref DBSecretArn # Pass DB secret ARN as environment variable
+
+Resources:
+  #########################################################
+  # IAM Roles
+  #########################################################
+  # Role for Lambda functions
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: MyAtelierApp-LambdaExecutionRole
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
+      Policies:
+        - PolicyName: SecretsAccess
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - secretsmanager:GetSecretValue
+                Resource: !Ref DBSecretArn
+
+  # Role for AppSync to invoke Lambda functions
+  AppSyncServiceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: MyAtelierApp-AppSyncServiceRole
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: appsync.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: AllowInvokeLambda
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - lambda:InvokeFunction
+                Resource:
+                  - !GetAtt ListProductsFunction.Arn
+                  - !GetAtt GetProductFunction.Arn
+                  - !GetAtt CreateProductFunction.Arn
+                  - !GetAtt UpdateProductFunction.Arn
+                  - !GetAtt DeleteProductFunction.Arn
+
+  #########################################################
+  # Lambda Functions
+  #########################################################
+  # Each Lambda function handles a specific CRUD operation
+  ListProductsFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: python3.13
+      BuildProperties:
+        PipRequirementsFile: requirements.txt
+    Properties:
+      Role: !GetAtt LambdaExecutionRole.Arn
+      FunctionName: ListProducts
+      Handler: lambdas/product/list.lambda_handler
+
+  GetProductFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: python3.13
+      BuildProperties:
+        PipRequirementsFile: requirements.txt
+    Properties:
+      Role: !GetAtt LambdaExecutionRole.Arn
+      FunctionName: GetProduct
+      Handler: lambdas/product/get.lambda_handler
+
+  CreateProductFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: python3.13
+      BuildProperties:
+        PipRequirementsFile: requirements.txt
+    Properties:
+      Role: !GetAtt LambdaExecutionRole.Arn
+      FunctionName: CreateProduct
+      Handler: lambdas/product/create.lambda_handler
+
+  UpdateProductFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: python3.13
+      BuildProperties:
+        PipRequirementsFile: requirements.txt
+    Properties:
+      Role: !GetAtt LambdaExecutionRole.Arn
+      FunctionName: UpdateProduct
+      Handler: lambdas/product/update.lambda_handler
+
+  DeleteProductFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: python3.13
+      BuildProperties:
+        PipRequirementsFile: requirements.txt
+    Properties:
+      Role: !GetAtt LambdaExecutionRole.Arn
+      FunctionName: DeleteProduct
+      Handler: lambdas/product/delete.lambda_handler
+
+  #########################################################
+  # AppSync API
+  #########################################################
+  ProductApi:
+    Type: AWS::AppSync::GraphQLApi
+    Properties:
+      Name: MyAtelierAppApi
+      AuthenticationType: API_KEY
+
+  ProductApiKey:
+    Type: AWS::AppSync::ApiKey
+    Properties:
+      ApiId: !GetAtt ProductApi.ApiId
+
+  ProductSchema:
+    Type: AWS::AppSync::GraphQLSchema
+    Properties:
+      ApiId: !GetAtt ProductApi.ApiId
+      DefinitionS3Location: ./schema.graphql
+
+  #########################################################
+  # AppSync DataSources
+  #########################################################
+  # Each DataSource links a Lambda function to AppSync
+  ListProductsDataSource:
+    Type: AWS::AppSync::DataSource
+    Properties:
+      ApiId: !GetAtt ProductApi.ApiId
+      Name: ListProductsDS
+      Type: AWS_LAMBDA
+      LambdaConfig:
+        LambdaFunctionArn: !GetAtt ListProductsFunction.Arn
+      ServiceRoleArn: !GetAtt AppSyncServiceRole.Arn
+
+  GetProductDataSource:
+    Type: AWS::AppSync::DataSource
+    Properties:
+      ApiId: !GetAtt ProductApi.ApiId
+      Name: GetProductDS
+      Type: AWS_LAMBDA
+      LambdaConfig:
+        LambdaFunctionArn: !GetAtt GetProductFunction.Arn
+      ServiceRoleArn: !GetAtt AppSyncServiceRole.Arn
+
+  CreateProductDataSource:
+    Type: AWS::AppSync::DataSource
+    Properties:
+      ApiId: !GetAtt ProductApi.ApiId
+      Name: CreateProductDS
+      Type: AWS_LAMBDA
+      LambdaConfig:
+        LambdaFunctionArn: !GetAtt CreateProductFunction.Arn
+      ServiceRoleArn: !GetAtt AppSyncServiceRole.Arn
+
+  UpdateProductDataSource:
+    Type: AWS::AppSync::DataSource
+    Properties:
+      ApiId: !GetAtt ProductApi.ApiId
+      Name: UpdateProductDS
+      Type: AWS_LAMBDA
+      LambdaConfig:
+        LambdaFunctionArn: !GetAtt UpdateProductFunction.Arn
+      ServiceRoleArn: !GetAtt AppSyncServiceRole.Arn
+
+  DeleteProductDataSource:
+    Type: AWS::AppSync::DataSource
+    Properties:
+      ApiId: !GetAtt ProductApi.ApiId
+      Name: DeleteProductDS
+      Type: AWS_LAMBDA
+      LambdaConfig:
+        LambdaFunctionArn: !GetAtt DeleteProductFunction.Arn
+      ServiceRoleArn: !GetAtt AppSyncServiceRole.Arn
+
+  #########################################################
+  # AppSync Resolvers
+  #########################################################
+  # Map GraphQL queries/mutations to respective DataSources
+  ListProductsResolver:
+    Type: AWS::AppSync::Resolver
+    Properties:
+      ApiId: !GetAtt ProductApi.ApiId
+      TypeName: Query
+      FieldName: listProducts
+      DataSourceName: !GetAtt ListProductsDataSource.Name
+
+  GetProductResolver:
+    Type: AWS::AppSync::Resolver
+    Properties:
+      ApiId: !GetAtt ProductApi.ApiId
+      TypeName: Query
+      FieldName: getProduct
+      DataSourceName: !GetAtt GetProductDataSource.Name
+
+  CreateProductResolver:
+    Type: AWS::AppSync::Resolver
+    Properties:
+      ApiId: !GetAtt ProductApi.ApiId
+      TypeName: Mutation
+      FieldName: createProduct
+      DataSourceName: !GetAtt CreateProductDataSource.Name
+
+  UpdateProductResolver:
+    Type: AWS::AppSync::Resolver
+    Properties:
+      ApiId: !GetAtt ProductApi.ApiId
+      TypeName: Mutation
+      FieldName: updateProduct
+      DataSourceName: !GetAtt UpdateProductDataSource.Name
+
+  DeleteProductResolver:
+    Type: AWS::AppSync::Resolver
+    Properties:
+      ApiId: !GetAtt ProductApi.ApiId
+      TypeName: Mutation
+      FieldName: deleteProduct
+      DataSourceName: !GetAtt DeleteProductDataSource.Name
+
+#########################################################
+# Outputs
+#########################################################
+# Export the GraphQL API URL
+Outputs:
+  GraphQLApiUrl:
+    Value: !GetAtt ProductApi.GraphQLUrl
+    Export:
+      Name: MyAtelierApp-GraphQLApiUrl

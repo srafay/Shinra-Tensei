@@ -1,0 +1,23 @@
+type Product {
+  id: ID!
+  name: String!
+  description: String
+  status: String!
+  createdAt: String!
+}
+
+type Query {
+  listProducts: [Product!]!
+  getProduct(id: ID!): Product
+}
+
+type Mutation {
+  createProduct(name: String!, description: String, status: String!): Product!
+  updateProduct(
+    id: ID!
+    name: String!
+    description: String
+    status: String!
+  ): Product!
+  deleteProduct(id: ID!): Product!
+}

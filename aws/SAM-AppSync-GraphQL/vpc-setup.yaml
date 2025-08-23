@@ -1,0 +1,148 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: VPC with private subnets, NAT gateway, and RDS security group
+
+Resources:
+  # Create a new VPC (Virtual Private Cloud) for all resources
+  MyVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: true # Enable DNS resolution inside the VPC
+      EnableDnsHostnames: true # Allow resources to get DNS hostnames
+      Tags:
+        - Key: Name
+          Value: MyAppVPC
+
+  # Internet Gateway to allow public internet access
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: MyAppIGW
+
+  # Attach Internet Gateway to the VPC
+  VPCGatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref MyVPC
+      InternetGatewayId: !Ref InternetGateway
+
+  # Public subnet for internet facing resources (like NAT, Load Balancer)
+  PublicSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref MyVPC
+      CidrBlock: 10.0.0.0/24
+      MapPublicIpOnLaunch: true # Automatically assign public IPs
+      AvailabilityZone: ap-southeast-2a # Hardcoded, should replace with !GetAZs
+      Tags:
+        - Key: Name
+          Value: PublicSubnet
+
+  # Elastic IP for the NAT Gateway
+  EIP:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+
+  # NAT Gateway: allows private subnets to reach internet (via PublicSubnet)
+  NATGateway:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId: !GetAtt EIP.AllocationId
+      SubnetId: !Ref PublicSubnet
+      Tags:
+        - Key: Name
+          Value: MyAppNAT
+
+  # First private subnet for RDS
+  RdsPrivateSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref MyVPC
+      CidrBlock: 10.0.1.0/24
+      MapPublicIpOnLaunch: false # Private subnet (no public IPs)
+      AvailabilityZone: ap-southeast-2a # Hardcoded, should replace with !Select !GetAZs
+      Tags:
+        - Key: Name
+          Value: RdsPrivateSubnet1
+
+  # Second private subnet for RDS (needed for Multi-AZ deployments)
+  RdsPrivateSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref MyVPC
+      CidrBlock: 10.0.2.0/24
+      MapPublicIpOnLaunch: false
+      AvailabilityZone: ap-southeast-2b # Hardcoded, should replace with !GetAZs
+      Tags:
+        - Key: Name
+          Value: RdsPrivateSubnet2
+
+  # Route table for public subnet (internet facing)
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref MyVPC
+
+  # Route all 0.0.0.0/0 traffic from public subnet to Internet Gateway
+  PublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: VPCGatewayAttachment
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+
+  # Associate public subnet with public route table
+  PublicSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet
+      RouteTableId: !Ref PublicRouteTable
+
+  # Route table for private subnets (traffic goes via NAT Gateway)
+  PrivateRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref MyVPC
+
+  # Default route for private subnets: send all outbound traffic to NAT Gateway
+  PrivateRoute:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref PrivateRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      NatGatewayId: !Ref NATGateway
+
+  # Attach private subnet1 to private route table
+  RdsPrivateSubnet1RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref RdsPrivateSubnet1
+      RouteTableId: !Ref PrivateRouteTable
+
+  # Attach private subnet2 to private route table
+  RdsPrivateSubnet2RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref RdsPrivateSubnet2
+      RouteTableId: !Ref PrivateRouteTable
+
+  # Security group for RDS and Lambda functions
+  LambdaSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for RDS and Lambda functions
+      VpcId: !Ref MyVPC
+
+Outputs:
+  VpcId:
+    Value: !Ref MyVPC
+  RdsPrivateSubnet1Id:
+    Value: !Ref RdsPrivateSubnet1
+  RdsPrivateSubnet2Id:
+    Value: !Ref RdsPrivateSubnet2
+  RdsSGId:
+    Value: !Ref LambdaSecurityGroup

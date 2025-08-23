@@ -1,0 +1,89 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: RDS MySQL instance in private VPC
+
+Parameters:
+  VpcId: # VPC where RDS and Security Groups will be created
+    Type: String
+  Subnet1: # First private subnet for RDS (Multi-AZ)
+    Type: String
+  Subnet2: # Second private subnet for RDS (Multi-AZ)
+    Type: String
+  RdsSGId: # Security group ID for Lambda (to allow Lambda to RDS traffic)
+    Type: String
+
+Resources:
+  AtelierDBSecret:
+    DeletionPolicy: Delete # Delete secret when stack is deleted (change to Retain later)
+    UpdateReplacePolicy: Delete
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: AtelierDBSecret # Secret name in Secrets Manager
+      Description: "Credentials for Atelier MySQL DB"
+      GenerateSecretString: # Auto-generate password
+        SecretStringTemplate: '{"username": "admin"}'
+        GenerateStringKey: "password" # Key for generated password
+        PasswordLength: 16 # Password length
+        ExcludeCharacters: '"@/\\' # Avoid problematic characters
+
+  AtelierDBSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow Lambda access to RDS # Security group for DB
+      VpcId: !Ref VpcId
+
+  AtelierDBSecurityGroupIngress:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      GroupId: !Ref AtelierDBSecurityGroup
+      IpProtocol: tcp
+      FromPort: 3306 # Allow MySQL port
+      ToPort: 3306
+      SourceSecurityGroupId: !Ref RdsSGId # Allow traffic only from Lambda SG
+
+  AtelierDBSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: "Subnet group for Atelier RDS"
+      SubnetIds:
+        - !Ref Subnet1
+        - !Ref Subnet2
+
+  AtelierDB:
+    Type: AWS::RDS::DBInstance
+    DeletionPolicy: Delete # Delete DB when stack is deleted (Retain later)
+    UpdateReplacePolicy: Delete
+    Properties:
+      DBInstanceIdentifier: atelier-mysql-db
+      AllocatedStorage: 20 # Storage size in GB
+      DBInstanceClass: db.t3.micro # Instance size (smallest for now)
+      Engine: mysql # MySQL engine
+      MasterUsername: admin # Username (same as secret, for reference)
+      MasterUserPassword: # Pull password dynamically from Secrets Manager
+        !Join [
+          "",
+          [
+            "{{resolve:secretsmanager:",
+            !Ref AtelierDBSecret,
+            ":SecretString:password}}",
+          ],
+        ]
+      DBName: productsdb # Initial database name
+      VPCSecurityGroups:
+        - !Ref AtelierDBSecurityGroup
+      DBSubnetGroupName: !Ref AtelierDBSubnetGroup
+      PubliclyAccessible: false # Must stay private (no public internet)
+      DeletionProtection: false # Allow deletion (change to true later)
+      BackupRetentionPeriod: 1 # Keep backups for 1 day (change to 30 days later, or as per security requirements)
+
+  AtelierDBSecretAttachment:
+    Type: AWS::SecretsManager::SecretTargetAttachment
+    Properties:
+      SecretId: !Ref AtelierDBSecret
+      TargetId: !Ref AtelierDB
+      TargetType: AWS::RDS::DBInstance
+
+Outputs:
+  DBSecretArn: # Output ARN of the secret (so Lambda can fetch credentials)
+    Value: !Ref AtelierDBSecret
+  DBEndpoint: # Output DB endpoint address (used by Lambda apps)
+    Value: !GetAtt AtelierDB.Endpoint.Address

@@ -1,0 +1,3 @@
+# boto3==1.40.8  # latest available to lambdas by default
+SQLAlchemy==2.0.43
+PyMySQL==1.1.1

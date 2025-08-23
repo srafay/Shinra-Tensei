@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# SAM build artifacts
+.aws-sam/
+.cache/
+
+# Local env files & secrets
+.env
+.env.*
+*.secret
+*.pem
+
+# IDE/project files
+.vscode/
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# Python test/cache files
+.pytest_cache/
+.coverage
+htmlcov/
